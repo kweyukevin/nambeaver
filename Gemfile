@@ -59,3 +59,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 #For user management and authentication
 gem 'devise'
+
+#Font awesome integration
+gem "font-awesome-rails"
