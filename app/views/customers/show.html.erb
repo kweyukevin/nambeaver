@@ -1,0 +1,43 @@
+<%= render 'layouts/header' %>
+
+<div class="container-fluid">
+  <div class="row">
+    <%= render 'layouts/navigation'%>
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2"><%= @customer.name %></h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+          <div class="btn-group me-2">
+            <%= link_to edit_customer_path(@customer) do%>
+              <button type="button" class="btn btn-sm  btn-outline-primary">Edit</button>
+            <%end%>
+            <%= link_to @customer, method: :delete, data: { confirm: 'Are you sure?' }  do%>
+              <button class="ml-2 btn btn-sm btn-danger">Delete</button>
+            <%end%>
+          </div>
+        </div>
+      </div>
+
+      <div class="table-responsive">
+          <p>
+            <strong>Email:</strong>
+            <%= @customer.email %>
+          </p>
+
+          <p>
+            <strong>Phone number:</strong>
+            <%= @customer.phone_number %>
+          </p>
+
+          <p>
+            <strong>Created On:</strong>
+            <%= @customer.created_at %>
+          </p>
+
+          <%= link_to 'Back', customers_path %>
+
+      </div>
+    </main>
+  </div>
+</div>
