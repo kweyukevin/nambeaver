@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   
-  get 'invoices', to: 'invoices#invoice'
   resources :invoices
   resources :customers
   get 'dashboard/index'
