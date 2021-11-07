@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_03_184136) do
+ActiveRecord::Schema.define(version: 2021_11_07_074125) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,26 @@ ActiveRecord::Schema.define(version: 2021_11_03_184136) do
     t.string "name"
     t.string "code"
     t.string "symbol"
+  end
+
+  create_table "customers", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "phone_number"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_customers_on_user_id"
+  end
+
+  create_table "invoices", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "customer_id"
+    t.integer "currency_id"
+    t.datetime "due_date"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -35,4 +55,5 @@ ActiveRecord::Schema.define(version: 2021_11_03_184136) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "customers", "users"
 end
