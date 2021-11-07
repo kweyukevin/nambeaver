@@ -1,24 +1,43 @@
+
+<%= render 'layouts/header' %>
+
+<div class="container-fluid">
+  <div class="row">
+    <%= render 'layouts/navigation'%>
+
+
 <p id="notice"><%= notice %></p>
 
-<h1>Invoices</h1>
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h2 class="h2">Invoices</h2>
+    <div class="btn-toolbar mb-2 mb-md-0">
+      <div class="btn-group me-2">
+        <%= link_to new_invoice_path do %>
+            <button type="button" class="btn btn-sm btn-outline-secondary">+ Create Invoice</button>
+        <%end%>
+      </div>
 
-<table>
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-striped table-sm">
   <thead>
     <tr>
-      <th>User</th>
-      <th>Customer</th>
-      <th>Currency</th>
-      <th>Due date</th>
-      <th>Status</th>
-      <th>Invoice description</th>
-      <th>Invoice quantity</th>
-      <th>Invoice unit price</th>
-      <th>Invoice total price</th>
-      <th>Invoice comment</th>
+      <th scope="col">User</th>
+      <th scope="col">Customer</th>
+      <th scope="col">Currency</th>
+      <th scope="col">Due date</th>
+      <th scope="col">Status</th>
+      <th scope="col">Description</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Unit price</th>
+      <th scope="col">Total price</th>
+      <th scope="col">Comment</th>
       <th colspan="3"></th>
     </tr>
   </thead>
-
   <tbody>
     <% @invoices.each do |invoice| %>
       <tr>
@@ -32,6 +51,7 @@
         <td><%= invoice.invoice_unit_price %></td>
         <td><%= invoice.invoice_total_price %></td>
         <td><%= invoice.invoice_comment %></td>
+
         <td><%= link_to 'Show', invoice %></td>
         <td><%= link_to 'Edit', edit_invoice_path(invoice) %></td>
         <td><%= link_to 'Destroy', invoice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -41,5 +61,3 @@
 </table>
 
 <br>
-
-<%= link_to 'New Invoice', new_invoice_path %>
