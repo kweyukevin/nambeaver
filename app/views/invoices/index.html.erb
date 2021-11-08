@@ -3,8 +3,7 @@
 
 <div class="container-fluid">
   <div class="row">
-    <%= render 'layouts/navigation'%>
-
+  <%= render 'layouts/navigation'%>
 
 <p id="notice"><%= notice %></p>
 
@@ -52,9 +51,9 @@
         <td><%= invoice.invoice_total_price %></td>
         <td><%= invoice.invoice_comment %></td>
 
-        <td><button class="btn btn-sm btn-secondary">  <%= link_to 'Preview', invoice %> </button> </td>
-        <td> <button class="btn  btn-sm btn-secondary">  <%= link_to 'Edit', edit_invoice_path(invoice) %> </button></td>
-        <td> <button class="btn btn-sm btn-secondary">  <%= link_to 'Destroy', invoice, method: :delete, data: { confirm: 'Are you sure?' } %> </button></td>
+        <td><button class="btn btn-sm btn-outline-secondary">  <%= link_to 'Preview', invoice %> </button> </td>
+        <td> <button class="btn btn-sm btn-outline-secondary">  <%= link_to 'Edit', edit_invoice_path(invoice) %> </button></td>
+        <td> <button class="btn btn-sm btn-outline-secondary">  <%= link_to 'Delete', invoice, method: :delete, data: { confirm: 'Are you sure?' } %> </button></td>
       </tr>
     <% end %>
   </tbody>
