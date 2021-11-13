@@ -62,3 +62,6 @@ gem 'devise'
 
 #Font awesome integration
 #gem "font-awesome-rails" #Removed to use cdn version
+
+gem 'bootstrap-sass'
+# gem 'bootstrap-sprockets'
