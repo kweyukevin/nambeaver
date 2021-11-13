@@ -1,54 +1,61 @@
 <body>
+  <%= form_with(model: invoice) do |form| %>
+    <% if invoice.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(invoice.errors.count, "error") %> prohibited this invoice from being saved:</h2>
 
-<%= form_with(model: invoice) do |form| %>
-  <% if invoice.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(invoice.errors.count, "error") %> prohibited this invoice from being saved:</h2>
-
-      <ul>
-        <% invoice.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
+        <ul>
+          <% invoice.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
   <% end %>
 
 <form class:"card" style="width: 18rem;">
 
 <div class="container-fluid card " style="width:fluid;">
 
- <div class="row">
-
-<div class="col-sm"></div>
-
- <div class="col-sm-2">
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.text_field :status, class:"form-control form-control-sm" %>
-  </div>
-  </div>
+  <div class="row">
+    <div class="col-sm-9"></div>
+    <div class="col-sm-3 pt-2">
+      <h3>Invoice No. #<%= form.object.user_id%></h3>
+    </div>
   </div>
 
   <!-- 1st row -->
- <div class="row">
+<div class="row">
+  <div class="col-sm-4">
+      <b>Bill to</b>
+      <div class="card">
+        <div class="card-body">
+          <% if form.object.customer_id %>
+            <% customer = Customer.find(form.object.customer_id) %>
+            <b><%= customer.name%></b>
+            <br>
+            <i><%= customer.email%></i>
+            <br>
+            <i><%= customer.phone_number%></i>
+          <% else %>
+            <p>Select Customer</p>
+            <%= form.select :customer_id, Customer.all.collect { |p| [ p.name, p.id ] }, {}, { class:"form-control form-control-sm" } %>
+          <%end%>
+        </div>
+      </div>
+      <% if form.object.customer_id.present? %>
+        <i>Change customer</i>
+        <%= form.select :customer_id, Customer.all.collect { |p| [ p.name, p.id ] }, {}, { class:"form-control form-control-sm" } %>
+      <% end %>
+  </div>
+  <!-- end of column -->
+  <div class="col-sm-8"></div>
 
-   <div class="col-sm">
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.number_field :user_id, value: current_user.id, class:"form-control form-control-sm" %>
+  <div class="col-sm-5">
+    <div class="field">
+      <%= form.hidden_field :user_id, value: current_user.id, class:"form-control form-control-sm" %>
+    </div>
   </div>
-  </div>
-<!-- end of column -->
-<div class="col-sm"></div>
-
-<div class="col-sm-5">
-  <div class="field">
-    <%= form.label :customer_id %>
-    <%= form.number_field :customer_id,class:"form-control form-control-sm"  %>
-  </div>
-  </div>
-  </div>
-
+</div>
 <!-- end of 1st row -->
 <br>
 <!-- start of another row -->
@@ -57,12 +64,11 @@
     <div class="col-sm-7"></div>
     <!-- End of column -->
     <div class="col-sm-5">
-  <div class="field">
-    <%= form.label :due_date %>
-    <%= form.datetime_select :due_date, class:"form-control form-control-sm" %>
-  </div>
-  </div>
-
+      <div class="field">
+        <%= form.label :due_date %>
+        <%= form.date_select :due_date, class:"form-control form-control-sm" %>
+      </div>
+    </div>
 </div>
 <!-- end of row -->
 
@@ -70,42 +76,35 @@
 <!-- start of row -->
 
 <div class="row">
-   <div class="col-sm">
-  <div class="field">
-    <%= form.label :invoice_description %>
-    <%= form.text_field :invoice_description,class:"form-control form-control-sm" %>
+  <div class="col-sm-12">
+    <table class="table table-striped table-sm">
+        <thead>
+          <tr>
+            <th scope="col" style="width: 50%">Item</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Price</th>
+            <th scope="col">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td>
+                <%= form.text_field :invoice_description,class:"form-control form-control-sm" %>
+              </td>
+              <td>
+                <%= form.text_field :invoice_quantity ,class:"form-control form-control-sm" %>
+              </td>
+              <td>
+                <%= form.text_field :invoice_unit_price, class:"form-control form-control-sm" %>
+              </td>
+              <td>
+                <%= form.text_field :invoice_total_price, class:"form-control form-control-sm" %>
+              </td>
+            </tr>
+        </tbody>
+    </table>
   </div>
-  </div>
-   <div class="col-sm">
-
-  <div class="field">
-    <%= form.label :invoice_quantity %>
-    <%= form.text_field :invoice_quantity ,class:"form-control form-control-sm" %>
-  </div>
-  </div>
-
-     <div class="col-sm">
-
-  <div class="field">
-    <%= form.label :invoice_unit_price %>
-    <%= form.text_field :invoice_unit_price, class:"form-control form-control-sm" %>
-  </div>
-  </div>
-   <div class="col-sm">
-
-  <div class="field">
-    <%= form.label :invoice_total_price %>
-    <%= form.text_field :invoice_total_price, class:"form-control form-control-sm" %>
-  </div>
-  </div>
-
- <div class="col-sm">
-  <div class="field">
-    <%= form.label :currency_id %>
-    <%= form.number_field :currency_id, class:"form-control form-control-sm" %>
-  </div>
-  </div>
-  </div>
+</div>
   <!-- End of row -->
   <div class="row">
      <div class="col-sm-6">
