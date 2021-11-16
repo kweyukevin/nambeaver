@@ -20,7 +20,6 @@
     <div class="col-sm-9"></div>
     <div class="col-sm-3 pt-2">
       <h3>Invoice No. #<%= form.object.id%></h3>
-      <h5>Currency:  <%= form.object.currency_id%></h3>
     </div>
   </div>
 
@@ -54,6 +53,7 @@
   <div class="col-sm-5">
     <div class="field">
       <%= form.hidden_field :user_id, value: current_user.id, class:"form-control form-control-sm" %>
+      <%= form.hidden_field :status, value: 1, class:"form-control form-control-sm" %>
     </div>
   </div>
 </div>
@@ -68,6 +68,10 @@
       <div class="field">
         <%= form.label :due_date %>
         <%= form.date_select :due_date, class:"form-control form-control-sm" %>
+      </div>
+      <div class="field">
+        <%= form.label :currency %>
+        <%= form.select :currency_id, Currency.all.collect { |p| [ p.name, p.id ] }, {}, { class:"form-control form-control-sm" } %></h3>
       </div>
     </div>
 </div>
@@ -123,4 +127,3 @@
 <% end %>
 </div>
 </form>
-

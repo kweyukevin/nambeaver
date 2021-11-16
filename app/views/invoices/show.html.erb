@@ -1,120 +1,124 @@
+<%= render 'layouts/header' %>
 
-<p id="notice"><%= notice %></p>
-
-<body>
-        <div class="container-fluid card" style= "width:fluid;">
-            <div class="row">
-                <div class="col-lg-6"></div>
-                <div class="col-lg-6">
-                    <h1 class="font-weight-lighter py-1 px-3">INVOICE</h1>
-                </div>
-            </div>
-            <div class="row my-3">
-                <div class="col-lg-6">
-                    <p class="mb-0">INVOICE TO</p>
-                    <h5 class="mb-0"><b> <%= @invoice.customer_id %> </b></h5>
-                    <p class="mb-0">Lorem Ipsum is simply dummy text of the.. </p>
-                    <p class="mb-0">07570-222804</p>
-                    <p class="mb-0">nmalviya@gmail.com</p>
-                </div>
-                <div class="col-lg-6">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td>Invoice No</td>
-                                        <td class="px-3">:</td>
-                                        <td>123456</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Due date</td>
-                                        <td class="px-3">:</td>
-                                        <td><%= @invoice.due_date %></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Invoice Date</td>
-                                        <td class="px-3">:</td>
-                                        <td><%= @invoice.due_date %></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Account No</td>
-                                        <td class="px-3">:</td>
-                                        <td>00000123</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+<div class="container-fluid">
+    <div class="row">
+        <%= render 'layouts/navigation'%>
+            <p id="notice"><%= notice %></p>
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <div class="container-fluid card" style= "width:fluid;">
+                        <div class="row">
+                            <div class="col-lg-6"></div>
+                            <div class="col-lg-6">
+                                <h1 class="font-weight-lighter py-1 px-3">INVOICE</h1>
+                            </div>
+                        </div>
+                        <div class="row my-3">
+                            <div class="col-lg-6">
+                                <p class="mb-0">INVOICE TO</p>
+                                <h5 class="mb-0"><b> <%= @invoice.customer.name %> </b></h5>
+                                <p class="mb-0"><%= @invoice.customer.phone_number %></p>
+                                <p class="mb-0"><%= @invoice.customer.email %></p>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <table>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Invoice No</td>
+                                                    <td class="px-3">:</td>
+                                                    <td><%= @invoice.id %></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Due date</td>
+                                                    <td class="px-3">:</td>
+                                                    <td><%= @invoice.due_date %></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Invoice Date</td>
+                                                    <td class="px-3">:</td>
+                                                    <td><%= @invoice.due_date %></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Account No</td>
+                                                    <td class="px-3">:</td>
+                                                    <td>00000123</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">NO</th>
+                                            <th scope="col">ITEM DESCREPTION</th>
+                                            <th scope="col">QTY</th>
+                                            <th scope="col">PRICE</th>
+                                            <th scope="col">TOTAL</th>
+                                            <th scope="col">CURRENCY</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>
+                                                <b><%= @invoice.invoice_description %></b>
+                                            </td>
+                                            <td><%= @invoice.invoice_quantity %> </td>
+                                            <td><%= @invoice.invoice_unit_price %></td>
+                                            <td><%= @invoice.invoice_total_price %></td>
+                                            <td><%= @invoice.currency.symbol %></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3"></td>
+                                            <td><b>SUB Total</b></td>
+                                            <td><b><%= @invoice.invoice_total_price %></b></td>
+                                            <td colspan="3"></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3"></td>
+                                            <td><b>TAX VAT 3%</b></td>
+                                            <td><b>16200</b></td>
+                                            <td colspan="3"></td>
+                                        </tr>
+                                        <tr style="background: #E6E4E7; color: #0099D5;">
+                                            <td colspan="3"></td>
+                                            <td><b>GRAND TOTAL</b></td>
+                                            <td><b> <%= @invoice.invoice_total_price %> </b></td>
+                                            <td colspan="3"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row mt-5">
+                            <div class="col-lg-6">
+                                <h5 class="ml-5">Invoice Comment</h5>
+                                <p class="ml-5">
+                                    <%= @invoice.invoice_comment %>
+                                </p>
+                            </div>
+                            <div class="col-lg-3"></div>
+                            <div class="col-lg-3 text-center">
+                                <h3 class="signature">User signature</h3>
+                                <p>User: <%= @invoice.user.first_name %></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <%= link_to 'Edit', edit_invoice_path(@invoice) %> |
+                                <%= link_to 'Back', invoices_path %>
+                            </div>
                         </div>
                     </div>
+                    
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th scope="col">NO</th>
-                                <th scope="col">ITEM DESCREPTION</th>
-                                <th scope="col">QTY</th>
-                                <th scope="col">PRICE</th>
-                                <th scope="col">TOTAL</th>
-                                <th scope="col">CURRENCY</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>
-                                    <b><%= @invoice.invoice_description %></b>
-
-                                </td>
-                                <td>  <%= @invoice.invoice_quantity %> </td>
-                                <td>  <%= @invoice.invoice_unit_price %></td>
-                                <td><%= @invoice.invoice_total_price %></td>
-                                <td><%= @invoice.currency_id %></td>
-                            </tr>
-
-
-                            <tr>
-                                <td colspan="3"></td>
-                                <td><b>SUB Total</b></td>
-                                <td><b><%= @invoice.invoice_total_price %></b></td>
-                                <td colspan="3"></td>
-                            </tr>
-                            <tr>
-                                <td colspan="3"></td>
-                                <td><b>TAX VAT 3%</b></td>
-                                <td><b>16200</b></td>
-                                <td colspan="3"></td>
-                            </tr>
-
-                            <tr style="background: #E6E4E7; color: #0099D5;">
-                                <td colspan="3"></td>
-                                <td><b>GRAND TOTAL</b></td>
-                                <td><b> <%= @invoice.invoice_total_price %> </b></td>
-                                <td colspan="3"></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-
-            <div class="row mt-5">
-                <div class="col-lg-6">
-                    <h5 class="ml-5">Invoice Comment</h5>
-                    <p class="ml-5">
-                      <%= @invoice.invoice_comment %>
-                    </p>
-                </div>
-                <div class="col-lg-3"></div>
-                <div class="col-lg-3 text-center">
-                    <h3 class="signature">User signature</h3>
-                    <p>User: <%= @invoice.user_id %></p>
-                </div>
-            </div>
-
-        </div>
-        <%= link_to 'Edit', edit_invoice_path(@invoice) %> |
-        <%= link_to 'Back', invoices_path %>
-</body>
+            </main>
+    </div>
+</div>
