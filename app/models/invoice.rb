@@ -1,5 +1,6 @@
 class Invoice < ApplicationRecord
   belongs_to :user
+  belongs_to :currency
 
   def invoice_status
     if status == 1
@@ -10,5 +11,6 @@ class Invoice < ApplicationRecord
       return "Paid"
     end
   end
+
 
 end

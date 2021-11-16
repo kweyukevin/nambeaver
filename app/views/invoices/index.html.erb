@@ -40,7 +40,7 @@
     <% @invoices.each do |invoice| %>
       <tr>
         <td><%= invoice.customer_id %></td>
-        <td><%= invoice.currency_id %></td>
+        <td><%= invoice.currency.symbol %></td>
         <td><%= invoice.due_date %></td>
         <td><%= invoice.invoice_status %></td>
         <td><%= invoice.invoice_description %></td>
