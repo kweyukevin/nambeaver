@@ -1,6 +1,6 @@
 class Invoice < ApplicationRecord
   belongs_to :user
-  has_one :customer
+  belongs_to :customer
   belongs_to :currency
 
   def invoice_status
