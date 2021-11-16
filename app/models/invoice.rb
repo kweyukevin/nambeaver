@@ -1,5 +1,6 @@
 class Invoice < ApplicationRecord
   belongs_to :user
+  has_one :customer
 
   def invoice_status
     if status == 1
