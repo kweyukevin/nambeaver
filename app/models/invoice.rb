@@ -17,10 +17,3 @@ class Invoice < ApplicationRecord
 end
 # invoice_quantity =
 # invoice_unit_price
-def invoive_total_price(invoice_quantity,invoice_unit_price)
-@invoice = invoice_quantity
-@invoice = invoice_unit_price
-
-sum_value = invoice_quantity * invoice_unit_price
-return sum_value
-end

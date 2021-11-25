@@ -1,0 +1,6 @@
+$modal = $('.modal'),
+$modalBody = $('.modal .modal-body'),
+$modalHeading = $('.modal .modal-heading');
+$modalHeading.html("<%= @invoice.invoice_description%>");
+$modalBody.html("<%= escape_javascript(render @invoice) %>");
+$modal.modal();
