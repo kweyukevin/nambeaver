@@ -17,3 +17,5 @@ class Invoice < ApplicationRecord
     where("due_date <= '#{from}' and due_date >='#{to}'")
   end
 end
+# invoice_quantity =
+# invoice_unit_price
