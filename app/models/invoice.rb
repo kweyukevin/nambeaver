@@ -13,5 +13,8 @@ class Invoice < ApplicationRecord
     end
   end
 
+def invoice_total_price
+  self.invoice_quantity * self.invoice_unit_price
 
+end
 end
