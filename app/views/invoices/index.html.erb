@@ -48,8 +48,7 @@
         <td><%= invoice.invoice_total_price %></td>
         <td><%= invoice.invoice_comment %></td>
 
-        <td><button class="btn btn-sm btn-outline-secondary">  <%= link_to 'Preview',invoice,remote: true %> </button> </td>
-        <td><%= link_to 'View Details', invoice, remote: true %></td>
+        <td><button class="btn btn-sm btn-outline-secondary">  <%= link_to 'Preview',invoice %> </button> </td>
         <td> <button class="btn btn-sm btn-outline-secondary">  <%= link_to 'Edit', edit_invoice_path(invoice) %> </button></td>
         <td> <button class="btn btn-sm btn-outline-secondary">  <%= link_to 'Delete', invoice, method: :delete, data: { confirm: 'Are you sure?' } %> </button></td>
       </tr>
