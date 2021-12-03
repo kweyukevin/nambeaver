@@ -97,13 +97,13 @@
                 <%= form.text_field :invoice_description,class:"form-control form-control-sm" %>
               </td>
               <td>
-                <%= form.text_field :invoice_quantity ,class:"form-control form-control-sm" %>
+                <%= form.text_field :invoice_quantity ,class:"form-control form-control-sm"  %>
               </td>
               <td>
                 <%= form.text_field :invoice_unit_price, class:"form-control form-control-sm" %>
               </td>
-              <td>
-                <%= form.text_field :invoice_total_price, class:"form-control form-control-sm" %>
+              <td style="background: #E6E4E7; color: #0099D5;">
+                <b> <%= @invoice.invoice_total_price  %> </b>
               </td>
             </tr>
         </tbody>
@@ -115,7 +115,7 @@
      <div class="col-sm-6">
   <div class="field">
     <%= form.label :invoice_comment %>
-    <%= form.text_field :invoice_comment ,class:"form-control" %>
+    <%= form.text_area :invoice_comment ,class:"form-control" %>
   </div>
   </div>
   <div class="col-sm"></div>
