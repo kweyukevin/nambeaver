@@ -13,6 +13,7 @@ class Invoice < ApplicationRecord
     end
   end
 
+
   def self.payment_band(from, to)
     where("due_date <= '#{from}' and due_date >='#{to}'")
   end
@@ -25,3 +26,4 @@ class Invoice < ApplicationRecord
 end
 # invoice_quantity =
 # invoice_unit_price
+
