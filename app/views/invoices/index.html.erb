@@ -45,7 +45,7 @@
         <td><%= invoice.invoice_description %></td>
         <td><%= invoice.invoice_quantity %></td>
         <td><%= invoice.invoice_unit_price %></td>
-        <td><%= invoice.invoice_total_price %></td>
+        <td><%= invoice.invoice_total_price(invoice.invoice_quantity, invoice.invoice_unit_price) %></td>
         <td><%= invoice.invoice_comment %></td>
 
         <td><button class="btn btn-sm btn-outline-secondary">  <%= link_to 'Preview',invoice %> </button> </td>

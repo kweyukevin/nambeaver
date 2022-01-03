@@ -102,8 +102,11 @@
               <td>
                 <%= form.text_field :invoice_unit_price, class:"form-control form-control-sm" %>
               </td>
+
+              <td>
               <td style="background: #E6E4E7; color: #0099D5;">
-                <b> <%= @invoice.invoice_total_price  %> </b>
+               <b> <%= form.text_field :invoice_total_price, class:"form-control form-control-sm disabled" %> </b>
+
               </td>
             </tr>
         </tbody>

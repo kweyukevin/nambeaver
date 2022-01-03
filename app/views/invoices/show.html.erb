@@ -72,7 +72,7 @@
                                             </td>
                                             <td><%= @invoice.invoice_quantity %> </td>
                                             <td><%= @invoice.invoice_unit_price %></td>
-                                            <td><%= @invoice.invoice_total_price %></td>
+                                            <td><%= @invoice.invoice_total_price(@invoice.invoice_quantity,@invoice.invoice_unit_price) %></td>
                                             <td><%= @invoice.currency.symbol %></td>
                                         </tr>
                                         <tr>
@@ -81,16 +81,11 @@
                                             <td><b><%= @invoice.invoice_total_price %></b></td>
                                             <td colspan="3"></td>
                                         </tr>
-                                        <tr>
-                                            <td colspan="3"></td>
-                                            <td><b>TAX VAT 3%</b></td>
-                                            <td><b>16200</b></td>
-                                            <td colspan="3"></td>
-                                        </tr>
+
                                         <tr style="background: #E6E4E7; color: #0099D5;">
                                             <td colspan="3"></td>
                                             <td><b>GRAND TOTAL</b></td>
-                                            <td><b> <%= @invoice.invoice_total_price %> </b></td>
+                                            <td><b> <%= @invoice.invoice_total_price(@invoice.invoice_quantity,@invoice.invoice_unit_price) %> </b></td>
                                             <td colspan="3"></td>
                                         </tr>
                                     </tbody>
