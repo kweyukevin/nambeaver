@@ -42,7 +42,7 @@
               <tr>
                 <td><%= invoice.customer.id %></td>
                 <td><%= invoice.customer.name %></td>
-                <td><%= invoice.currency.symbol %> <%= invoice.invoice_total_price %></td>
+                <td><%= invoice.currency.symbol %> <%= invoice.invoice_total_price(invoice.invoice_quantity,invoice.invoice_unit_price) %></td>
                 <td><%= invoice.invoice_status %></td>
                 <td><%= invoice.due_date %></td>
               </tr>

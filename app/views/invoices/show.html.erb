@@ -61,7 +61,7 @@
                                             <th scope="col">QTY</th>
                                             <th scope="col">PRICE</th>
                                             <th scope="col">TOTAL</th>
-                                            <th scope="col">CURRENCY</th>
+                                            <th scope="col"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -94,15 +94,15 @@
                         </div>
                         <div class="row mt-5">
                             <div class="col-lg-6">
-                                <h5 class="ml-5">Invoice Comment</h5>
+                                <h6 class="ml-5">Note: </h6>
                                 <p class="ml-5">
                                     <%= @invoice.invoice_comment %>
                                 </p>
                             </div>
                             <div class="col-lg-3"></div>
                             <div class="col-lg-3 text-center">
-                                <h3 class="signature">User signature</h3>
-                                <p>User: <%= @invoice.user.first_name %></p>
+                                <h6 class="signature">Yours sincerely:</h6>
+                                <p> <%= @invoice.user.first_name %>  <%= @invoice.user.last_name %></p>
                             </div>
                         </div>
                         <div class="row">

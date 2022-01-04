@@ -22,5 +22,3 @@ quantity * unit_price
  # invoice_quantity * invoice_unit_price
 end
 end
-
-
