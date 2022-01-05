@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_07_182756) do
+ActiveRecord::Schema.define(version: 2021_11_16_172347) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "currency", force: :cascade do |t|
+  create_table "currencies", force: :cascade do |t|
     t.string "name"
     t.string "code"
     t.string "symbol"
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2021_11_07_182756) do
     t.integer "customer_id"
     t.integer "currency_id"
     t.datetime "due_date"
-    t.string "status"
+    t.integer "status"
     t.string "invoice_description"
     t.decimal "invoice_quantity"
     t.decimal "invoice_unit_price"
@@ -61,4 +61,6 @@ ActiveRecord::Schema.define(version: 2021_11_07_182756) do
   end
 
   add_foreign_key "customers", "users"
+  add_foreign_key "invoices", "currencies"
+  add_foreign_key "invoices", "customers"
 end
