@@ -1,4 +1,5 @@
 <body>
+
   <%= form_with(model: invoice) do |form| %>
     <% if invoice.errors.any? %>
       <div id="error_explanation">
@@ -14,6 +15,7 @@
 
 <form class:"card" style="width: 18rem;">
 
+
 <div class="container-fluid card " style="width:fluid;">
 
   <div class="row">
@@ -22,6 +24,11 @@
       <h3>Invoice No. #<%= form.object.id%></h3>
     </div>
   </div>
+  </div>
+
+<!-- end of 1st row -->
+<br>
+<!-- start of another row -->
 
   <!-- 1st row -->
 <div class="row">
@@ -55,11 +62,13 @@
       <%= form.hidden_field :user_id, value: current_user.id, class:"form-control form-control-sm" %>
       <%= form.hidden_field :status, value: 1, class:"form-control form-control-sm" %>
     </div>
+
   </div>
 </div>
 <!-- end of 1st row -->
 <br>
 <!-- start of another row -->
+
 
  <div class="row">
     <div class="col-sm-7"></div>
@@ -106,19 +115,22 @@
               <td>
               <td style="background: #E6E4E7; color: #0099D5;">
                <b> <%= form.text_field :invoice_total_price, class:"form-control-plaintext form-control-sm ", disabled: true %> </b>
-<!-- :invoice_total_price -->
+
               </td>
             </tr>
         </tbody>
     </table>
   </div>
 </div>
+
   <!-- End of row -->
   <div class="row">
      <div class="col-sm-6">
   <div class="field">
     <%= form.label :invoice_comment %>
+
     <%= form.text_area :invoice_comment ,class:"form-control" %>
+
   </div>
   </div>
   <div class="col-sm"></div>
@@ -130,3 +142,4 @@
 <% end %>
 </div>
 </form>
+
