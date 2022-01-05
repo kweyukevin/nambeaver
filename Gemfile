@@ -64,4 +64,9 @@ gem 'devise'
 #gem "font-awesome-rails" #Removed to use cdn version
 
 gem 'bootstrap-sass'
+
+gem 'popper_js', '~> 2.9.3'
 # gem 'bootstrap-sprockets'
+gem 'carrierwave'
+gem 'net-ssh'
+
