@@ -99,6 +99,34 @@ body {
     border-color: transparent;
     box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
   }
-  a {
+  /* a {
       color: #6B747E;
+  } */
+
+  a:link {
+    color: #6B747E;
   }
+
+  /* visited link */
+  a:visited {
+    color: green;
+  }
+
+  /* mouse over link */
+  a:hover {
+  color: inherit;
+    background-color: #6B747E;
+  }
+
+  /* selected link */
+  a:active {
+    color: #F8F9FA;
+  }
+
+  /* .nav-link:focus {
+     color: #F8F9FA;
+} */
+
+.nav-link:focus, .nav-link:hover {
+    color: #FFFFFF;
+}
